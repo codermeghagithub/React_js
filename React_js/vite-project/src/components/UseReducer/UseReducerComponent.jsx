@@ -5,7 +5,7 @@ import React, { useReducer } from 'react'
 const UseReducerComponent = () => {
 
   const countReducer=(state,action)=>{   //** here state means count=0 */
-    switch(action.type){  //  **it can aluse here if else 
+    switch(action.type){  //  **it can also here if else 
       case "Increament":
         return {count:state.count+1};
 
