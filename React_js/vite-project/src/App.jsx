@@ -7,6 +7,7 @@ import IndianGoverment from './components/Usecontext/IndianGoverment';
 import MoneyState from './components/Usecontext/Context/MoneyState'
 import UseLayOutComponent from './components/useLayout/useLayOutComponent'
 import IncreamentComponent from './components/UseReducer/IncreamentComponent'
+import Scrolling_img from './components/UseRef/Scrolling_img'
 const App = () => {
   return (
     <MoneyState >
@@ -16,7 +17,8 @@ const App = () => {
     {/* <UseRefComponent/> */}
     {/* <IndianGoverment/> */}
     {/* <UseLayOutComponent/>  */}
-    <IncreamentComponent/>
+    {/* <IncreamentComponent/> */}
+    <Scrolling_img/>
     </MoneyState>
   )
 }
