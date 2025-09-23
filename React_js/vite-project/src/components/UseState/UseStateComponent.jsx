@@ -37,8 +37,8 @@ const UseStateComponent = () => {
    console.log(age);
    }
 
-   const increaseBy3=()=>{
-    setAge(age+3)
+   const Decrese1=()=>{
+    setAge(age-1)
     console.log(age);
     
    }
@@ -46,7 +46,7 @@ const UseStateComponent = () => {
     <div>UseStateComponent
     <h1>My age:{age}</h1>
     <button onClick={increaseBy1}>Increse 1</button>
-    <button onClick={increaseBy3}>Increse 3</button>
+    <button onClick={Decrese1}>Decrese 1</button>
     </div>
   )
 }

@@ -8,6 +8,9 @@ import MoneyState from './components/Usecontext/Context/MoneyState'
 import UseLayOutComponent from './components/useLayout/useLayOutComponent'
 import IncreamentComponent from './components/UseReducer/IncreamentComponent'
 import Scrolling_img from './components/UseRef/Scrolling_img'
+import UseCallbackComponent from './components/usecallback/UseCallbackComponent'
+import UsemoemoComponent from './components/Usememo/UsemoemoComponent'
+import Test from './components/Custom_hook/Test'
 const App = () => {
   return (
     <MoneyState >
@@ -18,7 +21,10 @@ const App = () => {
     {/* <IndianGoverment/> */}
     {/* <UseLayOutComponent/>  */}
     {/* <IncreamentComponent/> */}
-    <Scrolling_img/>
+    {/* <Scrolling_img/> */}
+    {/* <UseCallbackComponent/> */}
+    {/* <UsemoemoComponent/> */}
+    <Test/>
     </MoneyState>
   )
 }

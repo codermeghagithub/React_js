@@ -1,0 +1,23 @@
+import React, { useEffect, useState } from 'react'
+
+export  const useFetch=(url)=>{
+    const[data,setData]=useState([]);
+    const [loading,setLoading]=useState(true);
+    const[error,setError]=useState([]);
+
+useEffect(()=>{
+const fetchData=async()=>{
+  try{
+    const apicall=await fetch(url);
+    const result=await apicall.json();
+    setData(result);
+  }catch(error){
+    setError(error)
+  }finally{
+    setLoading(false)
+  }
+};
+fetchData();
+},[url]);
+return {data,loading,error}
+  }
