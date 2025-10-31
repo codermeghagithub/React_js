@@ -23,7 +23,7 @@ useState makes React re-render automatically when the state changes.
 
 **Example:** A counter app where the number should update on button click.
 
-```js
+```js 
 const [count, setCount] = useState(0);
 <button onClick={() => setCount(count+1)}>Increment</button>
 ```
