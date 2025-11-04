@@ -95,6 +95,41 @@ const books = [
 
 // *chaining of map, filter 
 
+// const arr=[1,2,3,4,5,6]
+// let res=arr.map((val)=>val*2)
+// .map((i)=>i*10)
+// .filter((j)=>{
+//   return j>30
+// })
+// console.log(res);
 
 
 // *Reducemethod 
+const shoppingcart=[{
+  itemname:"js course",
+  price:999},
+  {
+
+ itemname:"GEn AI course",
+  price:900
+},
+{
+   itemname:"ML course",
+  price:3000
+},
+{
+   itemname:"C course",
+  price:2000
+},
+{
+   itemname:"Flutter course",
+  price:10000
+}
+]
+
+
+let intial=0;
+let total_price=shoppingcart.reduce((accumulator,curr_val)=>accumulator+curr_val.price,intial)
+console.log(total_price);
+
+
