@@ -83,3 +83,13 @@ document.querySelector("#images").addEventListener("click", function (e) {
   // or we can use
 // removeIt.parentNode.removeChild(removeIt)
 });
+
+
+
+function addoptlist(langname) {
+  const li = document.createElement("li");
+  li.appendChild(document.createTextNode(langname));
+  document.querySelector(".language").appendChild(li);
+}
+addoptlist("Math");
+addoptlist("Next JS");

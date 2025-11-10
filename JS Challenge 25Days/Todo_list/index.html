@@ -23,7 +23,7 @@
     }
 
     /* Dark mode styles */
-    body.dark-mod {
+    body.dark-mode {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
     }
 
@@ -232,6 +232,17 @@ align-items: center;
     body.dark-mode .empty-state {
       color: #888;
     }
+
+    ul li{
+  /* cursor:pointer; */
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #6c6069;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: 0.2s;
+    }
   </style>
 </head>
 <body> 
@@ -255,7 +266,11 @@ align-items: center;
   </div>
   
   <ul class="todo-list" id="todoList">
-    <div class="empty-state">No tasks yet. Add one to get started! 🚀</div>
+    <li>DSA 1 Question leetcode
+     <button class="close" onclick="this.parentElement.remove()">×</button>
+     </li>
+    <br>
+
   </ul>
 </div>
 
