@@ -1,279 +1,288 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ce4cc8 0%, #fed4fe 100%);
-      min-height: 100vh;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: background 0.3s ease;
-    }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #ce4cc8 0%, #fed4fe 100%);
+        min-height: 100vh;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background 0.3s ease;
+      }
 
-    /* Dark mode styles */
-    body.dark-mode {
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    }
+      /* Dark mode styles */
+      body.dark-mode {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      }
 
-    .container {
-      background: white;
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-      max-width: 700px;
-      width: 100%;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
+      .container {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        max-width: 700px;
+        width: 100%;
+        transition: background 0.3s ease, color 0.3s ease;
+      }
 
-    /* Dark mode container */
-    body.dark-mode .container {
-      background: #2d2d44;
-      color: #e0e0e0;
-    }
+      /* Dark mode container */
+      body.dark-mode .container {
+        background: #2d2d44;
+        color: #e0e0e0;
+      }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
 
-    h1 {
-      color: deeppink;
-      font-size: 2.5em;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-      margin: 0;
-    }
-    /* .fih1{
+      h1 {
+        color: deeppink;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 0;
+      }
+      /* .fih1{
 align-items: center;
     } */
 
-    body.dark-mode h1 {
-      color: #ff69b4;
-    }
-
-    /* Theme toggle button */
-    #theme-switch {
-      padding: 10px 20px;
-      background: #f0f0f0;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      cursor: pointer;
-      font-size: 20px;
-      transition: all 0.3s;
-      margin-right: auto;
-      margin-left: 0;
-    }
-
-    #theme-switch:hover {
-      transform: scale(1.1);
-    }
-
-    body.dark-mode #theme-switch {
-      background: #1a1a2e;
-      border-color: #444;
-    }
-
-    .input-section {
-      margin-bottom: 30px;
-    }
-
-    #taskInput {
-      width: 100%;
-      padding: 15px 20px;
-      font-size: 16px;
-      border: 2px solid #ddd;
-      border-radius: 10px;
-      outline: none;
-      transition: all 0.3s;
-      background: white;
-      color: #333;
-    }
-
-    body.dark-mode #taskInput {
-      background: #1a1a2e;
-      border-color: #444;
-      color: #e0e0e0;
-    }
-
-    #taskInput:focus {
-      border-color: deeppink;
-      box-shadow: 0 0 10px rgba(255, 20, 147, 0.2);
-    }
-
-    body.dark-mode #taskInput:focus {
-      border-color: #ff69b4;
-      box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
-    }
-
-    .add-btn {
-      padding: 15px 30px;
-      background: linear-gradient(135deg, deeppink, #ff1493);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
-    }
-
-    .add-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
-    }
-
-    .add-btn:active {
-      transform: translateY(0);
-    }
-
-    .todo-list {
-      list-style: none;
-    }
-
-    .todo-item {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 15px;
-      background: #f8f9fa;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      transition: all 0.3s;
-      animation: slideIn 0.3s ease;
-    }
-
-    body.dark-mode .todo-item {
-      background: #1a1a2e;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateX(-20px);
+      body.dark-mode h1 {
+        color: #ff69b4;
       }
-      to {
-        opacity: 1;
-        transform: translateX(0);
+
+      /* Theme toggle button */
+      #theme-switch {
+        padding: 10px 20px;
+        background: #f0f0f0;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        transition: all 0.3s;
+        margin-right: auto;
+        margin-left: 0;
       }
-    }
 
-    .todo-item:hover {
-      background: #e9ecef;
-      transform: translateX(5px);
-    }
+      #theme-switch:hover {
+        transform: scale(1.1);
+      }
 
-    body.dark-mode .todo-item:hover {
-      background: #16213e;
-    }
+      body.dark-mode #theme-switch {
+        background: #1a1a2e;
+        border-color: #444;
+      }
 
-    .todo-item.completed .todo-text {
-      text-decoration: line-through;
-      opacity: 0.6;
-    }
+      .input-section {
+        margin-bottom: 30px;
+      }
 
-    .checkbox {
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-    }
+      #taskInput {
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        outline: none;
+        transition: all 0.3s;
+        background: white;
+        color: #333;
+      }
 
-    .todo-text {
-      flex: 1;
-      font-size: 16px;
-      color: #333;
-    }
+      body.dark-mode #taskInput {
+        background: #1a1a2e;
+        border-color: #444;
+        color: #e0e0e0;
+      }
 
-    body.dark-mode .todo-text {
-      color: #e0e0e0;
-    }
+      #taskInput:focus {
+        border-color: deeppink;
+        box-shadow: 0 0 10px rgba(255, 20, 147, 0.2);
+      }
 
-    .delete-btn {
-      padding: 8px 12px;
-      background: #ff4757;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 18px;
-      transition: all 0.3s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-    }
+      body.dark-mode #taskInput:focus {
+        border-color: #ff69b4;
+        box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
+      }
 
-    .delete-btn:hover {
-      background: #ff3838;
-      transform: scale(1.05);
-    }
+      .add-btn {
+        padding: 15px 30px;
+        background: linear-gradient(135deg, deeppink, #ff1493);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+      }
 
-    .empty-state {
-      text-align: center;
-      color: #999;
-      padding: 40px;
-      font-size: 18px;
-    }
+      .add-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
+      }
 
-    body.dark-mode .empty-state {
-      color: #888;
-    }
+      .add-btn:active {
+        transform: translateY(0);
+      }
 
-    ul li{
-  /* cursor:pointer; */
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  list-style-type: none;
-  background: #6c6069;
-  border-radius: 10px;
-  font-size: 18px;
-  transition: 0.2s;
-    }
-  </style>
-</head>
-<body> 
-  
- <div class="container">
-  <div class="header"> 
+      .todo-list {
+        list-style: none;
+      }
 
-    <button id="theme-switch" onclick="toggleTheme()">🌙</button>
+      .todo-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        transition: all 0.3s;
+        animation: slideIn 0.3s ease;
+      }
 
-   <h1  style="flex:1;text-align: center;">📝 ToDo List</h1>
-    <button class="add-btn" onclick="addTask()">Add</button>
-  </div>
+      body.dark-mode .todo-item {
+        background: #1a1a2e;
+      }
 
-  <div class="input-section">
-    <input 
-      type="text" 
-      id="taskInput" 
-      placeholder="Enter your today's task..." 
-      autocomplete="off"
-    >
-  </div>
-  
-  <ul class="todo-list" id="todoList">
-    <li>DSA 1 Question leetcode
-     <button class="close" onclick="this.parentElement.remove()">×</button>
-     </li>
-    <br>
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
 
-  </ul>
-</div>
+      .todo-item:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+      }
 
-<script src="script.js"></script>
-</body>
+      body.dark-mode .todo-item:hover {
+        background: #16213e;
+      }
+
+      .todo-item.completed .todo-text {
+        text-decoration: line-through;
+        opacity: 0.6;
+      }
+
+      .checkbox {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+      }
+
+      .todo-text {
+        flex: 1;
+        font-size: 16px;
+        color: #333;
+      }
+
+      body.dark-mode .todo-text {
+        color: #e0e0e0;
+      }
+
+      .delete-btn {
+        padding: 8px 12px;
+        background: #ff4757;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+      }
+
+      .delete-btn:hover {
+        background: #ff3838;
+        transform: scale(1.05);
+      }
+
+      .empty-state {
+        text-align: center;
+        color: #999;
+        padding: 40px;
+        font-size: 18px;
+      }
+
+      body.dark-mode .empty-state {
+        color: #888;
+      }
+
+      ul li {
+        /* cursor:pointer; */
+        position: relative;
+        padding: 12px 8px 12px 40px;
+        list-style-type: none;
+        background: #6c6069;
+        border-radius: 10px;
+        font-size: 18px;
+        transition: 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <button id="theme-switch" onclick="toggleTheme()">🌙</button>
+
+        <h1 style="flex: 1; text-align: center">📝 ToDo List</h1>
+        <button class="add-btn" onclick="addTask()">Add</button>
+      </div>
+
+      <div class="input-section">
+        <div class="left">
+          <input
+            type="text"
+            id="taskInput"
+            placeholder="Enter your today's task..."
+            autocomplete="off"
+          />
+        </div>
+        <div class="right">
+          <div>DSA 1 Question leetcode</div>
+          <div>C</div>
+        </div>
+      </div>
+
+      <ul class="todo-list" id="todoList">
+        <div>
+          <p>DSA 1 Question leetcode</p>
+            <span class="btn">
+              <i class="fa-solid fa-file-pen"></i>
+              <i class="fa-solid fa-trash-can"></i>
+            </span>
+
+        </div>
+       
+      </ul>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
 </html>

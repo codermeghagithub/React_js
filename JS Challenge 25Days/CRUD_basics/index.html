@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRUD Basics</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0 50px;
+      }
+
+      .container {
+        display: flex;
+        gap: 50px;
+      }
+
+      #order {
+        width: 400px;
+      }
+
+      #order div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .btn {
+        display: flex;
+        gap: 25px;
+      }
+
+      i {
+        cursor: pointer;
+      }
+
+      #msg {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CRUD Operation</h1>
+    <div class="container">
+      <div class="left">
+        <form id="form">
+          <label for="">Order your food which you want</label>
+          <textarea name="" id="input" cols="30" rows="10"></textarea>
+          <br /><br />
+          <div id="msg"></div>
+          <button type="submit">submit</button>
+        </form>
+      </div>
+      <div class="right">
+        <h3>Order Your food</h3>
+        <div id="order">
+          <div>
+            <p>Chawmin</p>
+            <span class="btn">
+              <i onClick="update_f(this)" class="fa-solid fa-file-pen"></i>
+              <i onClick="delete_f(this)" class="fa-solid fa-trash-can"></i>
+            </span>
+          </div>
+          <div>
+            <p>butter paneer</p>
+            <span class="btn">
+              <i onClick="update_f(this)" class="fa-solid fa-file-pen"></i>
+              <i onClick="delete_f(this)" class="fa-solid fa-trash-can"></i>
+            </span>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
