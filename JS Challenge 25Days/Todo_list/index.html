@@ -7,7 +7,7 @@
     <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <style>
  
-      * {
+     * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -17,14 +17,13 @@
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         background: linear-gradient(135deg, #ce4cc8 0%, #fed4fe 100%);
         min-height: 100vh;
-        padding: 20px;
+        padding: 15px;
         display: flex;
         justify-content: center;
         align-items: center;
         transition: background 0.3s ease;
       }
 
-      /* Dark mode styles */
       body.dark-mode {
         background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
       }
@@ -32,16 +31,15 @@
       .container {
         background: white;
         border-radius: 20px;
-        padding: 40px;
+        padding: 25px;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
         max-width: 700px;
         width: 100%;
         transition: background 0.3s ease, color 0.3s ease;
       }
 
-      /* Dark mode container */
       body.dark-mode .container {
-        background: #2d2d44;
+        background: #6c6c86;
         color: #e0e0e0;
       }
 
@@ -49,34 +47,34 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        gap: 10px;
+        flex-wrap: wrap;
       }
 
       h1 {
         color: deeppink;
-        font-size: 2.5em;
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         margin: 0;
+        flex: 1;
+        text-align: center;
+        min-width: 200px;
       }
-      /* .fih1{
-align-items: center;
-    } */
 
       body.dark-mode h1 {
         color: #ff69b4;
       }
 
-      /* Theme toggle button */
       #theme-switch {
-        padding: 10px 20px;
+        padding: 10px 15px;
         background: #f0f0f0;
         border: 2px solid #ddd;
         border-radius: 10px;
         cursor: pointer;
-        font-size: 20px;
+        font-size: 18px;
         transition: all 0.3s;
-        margin-right: auto;
-        margin-left: 0;
+        order: -1;
       }
 
       #theme-switch:hover {
@@ -89,13 +87,13 @@ align-items: center;
       }
 
       .input-section {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
       }
 
       #taskInput {
         width: 100%;
-        padding: 15px 20px;
-        font-size: 16px;
+        padding: 12px 15px;
+        font-size: clamp(14px, 2.5vw, 16px);
         border: 2px solid #ddd;
         border-radius: 10px;
         outline: none;
@@ -121,16 +119,17 @@ align-items: center;
       }
 
       #add-btn {
-        padding: 15px 30px;
+        padding: 12px 25px;
         background: linear-gradient(135deg, deeppink, #ff1493);
         color: white;
         border: none;
         border-radius: 10px;
-        font-size: 16px;
+        font-size: clamp(14px, 2.5vw, 16px);
         font-weight: bold;
         cursor: pointer;
         transition: all 0.3s;
         box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+        white-space: nowrap;
       }
 
       #add-btn:hover {
@@ -142,23 +141,26 @@ align-items: center;
         transform: translateY(0);
       }
 
-      .todo-list {
-        list-style: none;
+      .todo {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
       }
 
-      .todo-item {
+      .todo > div {
         display: flex;
         align-items: center;
-        gap: 15px;
+        justify-content: space-between;
+        gap: 10px;
         padding: 15px;
         background: #f8f9fa;
         border-radius: 10px;
-        margin-bottom: 10px;
         transition: all 0.3s;
         animation: slideIn 0.3s ease;
+        flex-wrap: wrap;
       }
 
-      body.dark-mode .todo-item {
+      body.dark-mode .todo > div {
         background: #1a1a2e;
       }
 
@@ -173,59 +175,125 @@ align-items: center;
         }
       }
 
-      .todo-item:hover {
+      .todo > div:hover {
         background: #e9ecef;
         transform: translateX(5px);
       }
 
-      body.dark-mode .todo-item:hover {
+      body.dark-mode .todo > div:hover {
         background: #16213e;
       }
 
-      .todo-item.completed .todo-text {
-        text-decoration: line-through;
-        opacity: 0.6;
-      }
-
-      .checkbox {
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-      }
-
-      .todo-text {
+      .todo p {
         flex: 1;
-        font-size: 16px;
+        font-size: clamp(14px, 2.5vw, 16px);
         color: #333;
+        word-break: break-word;
+        min-width: 150px;
       }
 
-      body.dark-mode .todo-text {
+      body.dark-mode .todo p {
         color: #e0e0e0;
+      }
+
+      .btn {
+        display: flex;
+        gap: 15px;
+        flex-shrink: 0;
+      }
+
+      .btn i {
+        cursor: pointer;
+        font-size: clamp(16px, 3vw, 18px);
+        transition: all 0.3s;
+        padding: 5px;
+      }
+
+      .btn i:hover {
+        transform: scale(1.2);
+        color: deeppink;
+      }
+
+      body.dark-mode .btn i:hover {
+        color: #ff69b4;
+      }
+
+      #err_msg {
+        color: red;
+        font-size: clamp(12px, 2vw, 14px);
+        margin-top: 5px;
+        min-height: 20px;
       }
 
       .empty-state {
         text-align: center;
         color: #999;
-        padding: 40px;
-        font-size: 18px;
+        padding: 40px 20px;
+        font-size: clamp(14px, 3vw, 18px);
       }
 
       body.dark-mode .empty-state {
         color: #888;
       }
 
-      .btn{
-        display: flex;
-        gap: 40px;
+      /* Mobile optimizations */
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+
+        .container {
+          padding: 20px;
+          border-radius: 15px;
+        }
+
+        #header {
+          gap: 8px;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        #theme-switch {
+          padding: 8px 12px;
+          font-size: 16px;
+        }
+
+        #add-btn {
+          padding: 10px 20px;
+        }
+
+        .todo > div {
+          padding: 12px;
+        }
+
+        .btn {
+          gap: 12px;
+        }
       }
-      
-      .todo div{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+
+      /* Tablet optimizations */
+      @media (min-width: 601px) and (max-width: 900px) {
+        .container {
+          padding: 30px;
+        }
       }
-      #err_msg{
-        color: red;
+
+      /* Small mobile devices */
+      @media (max-width: 380px) {
+        h1 {
+          font-size: 1.5rem;
+          min-width: 150px;
+        }
+
+        .btn {
+          gap: 10px;
+        }
+
+        .todo > div {
+          padding: 10px;
+        }
       }
 
     </style>

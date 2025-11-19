@@ -19,14 +19,18 @@ let error = document.getElementById("err_msg");
 let todoContainer = document.querySelector(".todo");
 
 addbtn.addEventListener("click", addTask);
-
+// Clear error while typing
+input.addEventListener("input", () => {
+  if (input.value.trim() !== "") {
+    error.innerHTML = "";
+  }
+});
 function addTask() {
   let task = input.value.trim();
 
   if (task === "") {
     error.innerHTML = "You have to enter at least one task";
-    console.log("clicked");
-    
+    // console.log("fail");
     return;
   }
 
@@ -50,18 +54,14 @@ function addTask() {
   input.value = ""; // clear the textbox
 }
 
-let update_task=(e)=>{
-input.value=e.parentElement.previousElementSibling.innerHTML;
-e.parentElement.parentElement.remove();
-}
+let update_task = (e) => {
+  input.value = e.parentElement.previousElementSibling.innerHTML;
+  e.parentElement.parentElement.remove();
+};
 
-let del_task=(e)=>{
-e.parentElement.parentElement.remove();  //means div of that task 
-}
- 
-
-
-
+let del_task = (e) => {
+  e.parentElement.parentElement.remove(); //means div of that task
+};
 
 // function addTask() {
 //   let li = document.createElement("li");
