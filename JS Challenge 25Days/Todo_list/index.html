@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo List</title>
     <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <style>
+ 
       * {
         margin: 0;
         padding: 0;
@@ -44,7 +45,7 @@
         color: #e0e0e0;
       }
 
-      .header {
+      #header {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -119,7 +120,7 @@ align-items: center;
         box-shadow: 0 0 10px rgba(255, 105, 180, 0.4);
       }
 
-      .add-btn {
+      #add-btn {
         padding: 15px 30px;
         background: linear-gradient(135deg, deeppink, #ff1493);
         color: white;
@@ -132,12 +133,12 @@ align-items: center;
         box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
       }
 
-      .add-btn:hover {
+      #add-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(255, 20, 147, 0.6);
       }
 
-      .add-btn:active {
+      #add-btn:active {
         transform: translateY(0);
       }
 
@@ -202,27 +203,6 @@ align-items: center;
         color: #e0e0e0;
       }
 
-      .delete-btn {
-        padding: 8px 12px;
-        background: #ff4757;
-        color: white;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 18px;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-      }
-
-      .delete-btn:hover {
-        background: #ff3838;
-        transform: scale(1.05);
-      }
-
       .empty-state {
         text-align: center;
         color: #999;
@@ -234,53 +214,62 @@ align-items: center;
         color: #888;
       }
 
-      ul li {
-        /* cursor:pointer; */
-        position: relative;
-        padding: 12px 8px 12px 40px;
-        list-style-type: none;
-        background: #6c6069;
-        border-radius: 10px;
-        font-size: 18px;
-        transition: 0.2s;
+      .btn{
+        display: flex;
+        gap: 40px;
       }
+      
+      .todo div{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      #err_msg{
+        color: red;
+      }
+
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="header">
+      <div id="header">
+        <!-- <form id="form"> -->
         <button id="theme-switch" onclick="toggleTheme()">🌙</button>
 
         <h1 style="flex: 1; text-align: center">📝 ToDo List</h1>
-        <button class="add-btn" onclick="addTask()">Add</button>
+        <button id="add-btn" onclick="addTask()">Add</button>
+        
       </div>
 
       <div class="input-section">
-        <div class="left">
+        <div class="above">
           <input
             type="text"
             id="taskInput"
             placeholder="Enter your today's task..."
             autocomplete="off"
           />
+          <br>
+          <div id="err_msg"></div>
         </div>
-        <div class="right">
-          <div>DSA 1 Question leetcode</div>
-          <div>C</div>
-        </div>
-      </div>
-
-      <ul class="todo-list" id="todoList">
-        <div>
-          <p>DSA 1 Question leetcode</p>
+         </div>
+        <div class="todo">
+          <div>
+            <p>DSA 1 Question leetcode</p>
             <span class="btn">
-              <i class="fa-solid fa-file-pen"></i>
-              <i class="fa-solid fa-trash-can"></i>
+              <i onClick="update_task(this)"class="fa-solid fa-file-pen"></i>
+              <i onClick="del_task(this)"class="fa-solid fa-trash-can"></i>
+            </span>
+          </div>
+     <div>
+          <p>One miniproject</p>
+            <span class="btn">
+              <i onClick="update_task(this)"class="fa-solid fa-file-pen"></i>
+              <i onClick="del_task(this)"class="fa-solid fa-trash-can"></i>
             </span>
 
         </div>
-       
-      </ul>
+        </div>
     </div>
 
     <script src="script.js"></script>
